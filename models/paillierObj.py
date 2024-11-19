@@ -9,24 +9,45 @@ private key = lambda, mu
 """
 class paillerObj:
 
-    def __init__(self, p, q):
-        self.p = p 
-        self.q = q
-        self.n = p*q
+    """ 
+    n public key
+    g public key
+    p private key
+    q private key
+    """
+    def __init__(self, *args):
+        self.p = 0
+        self.q = 0
+        self.g = 0
+        self.n = 0
+        if len(args) >= 2:
+            self.setPublicKey(args[1], args[0])
+            if len(args) == 4:
+                self.setPrivateKey(args[2], args[3])
+
+    """
+    Sets the public key of a given file.
+    """
+    def setPublicKey(self, g, n):
+        self.g = g
+        self.n = n
         self.r = random.randint(1,self.n - 1)
         while math.gcd(self.n, self.r) != 1:
             self.r = random.randint(1,self.n - 1)
 
     def setPrivateKey(self, p, q):
+        self.p = p 
+        self.q = q
         return
     
     """
     @pt the plain text
     @g our random integer we raise to the power.
     """
-    def encrpt(self, pt, g):
-        self.g = g #TODO make this auto generate
-        self.cipherText = ((g**pt)*(self.r**self.n))
+    def encrpt(self, pt):
+        # g^pt * r^n
+        self.cipherText = ((self.g**pt)*(self.r**self.n))
+        # ct % n^2
         self.cipherText = self.cipherText % (self.n**2)
 
     """
@@ -56,15 +77,17 @@ class paillerObj:
         return x
     
     """
-    Adds two encrypted paillers together.
+    Multiplies a pailler by a plaintext result pt = pt * new
     """
-    def multiplyPaillers(self, new):
+    def multiply(self, new):
         self.cipherText **= new
         self.cipherText %= self.n**2
 
 
     """
-    Adds two encrypted paillers together.
+    Adds two encrypted paillers together. Must be a 
+    paillierObj.
+    pt = pt + new
     """
     def addPaillers(self, new):
         self.cipherText *= new.cipherText
@@ -81,14 +104,6 @@ class paillerObj:
         return -1
     
 
-class paillerKeys:
-    def __init__(self):
-        self.p = 2
-        self.q = 2
-        while not isprime(self.p):
-            self.p = random.randint(2, 1000000)
-        while not isprime(self.p):
-            self.q = random.randint(2, 1000000)
 
 
 p = 113

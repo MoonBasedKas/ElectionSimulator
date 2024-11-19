@@ -12,9 +12,9 @@ class paillerKeys:
             self.p = 2
             self.q = 2
             while not isprime(self.p):
-                self.p = random.randint(2, 1000000)
+                self.p = random.randint(2, 10000)
             while not isprime(self.p):
-                self.q = random.randint(2, 1000000)
+                self.q = random.randint(2, 10000)
         else:
             self.p = args[0]
             self.q = args[1]
@@ -40,3 +40,9 @@ class paillerKeys:
                     processing = false
                     break
         return self.g
+    
+    def getPrivateP(self):
+        return self.p
+    
+    def getPrivateP(self):
+        return self.q
