@@ -7,7 +7,7 @@ import threading
 import random
 
 # keys = paillerKeys.paillerKeys(1009, 1013)
-keys = paillerKeys.paillerKeys(113, 117)
+keys = paillerKeys.paillerKeys(13, 11)
 
 def main():
     pop = 10000
@@ -46,7 +46,7 @@ def main():
             pass
         else:
             print("Invalid command use -h for help.")
-    prov = [["Cramer", 2500], ["Fidel", 2500], ["Jonesa", 2500], ["Jones", 2500]]
+    prov = [["Cramer", 10], ["Fidel", 10], ["Jonesa", 10], ["Jones", 10]]
     keys.generateN()
     keys.generateG()
 
