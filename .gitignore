@@ -1,3 +1,6 @@
 __pycache__/website.cpython-310.pyc
 models/__pycache__/vote.cpython-310.pyc
 models/__pycache__/paillerKeys.cpython-310.pyc
+models/__pycache__/dbCon.cpython-310.pyc
+models/__pycache__/paillierObj.cpython-310.pyc
+models/__pycache__/provence.cpython-310.pyc

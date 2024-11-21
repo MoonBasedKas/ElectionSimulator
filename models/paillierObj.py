@@ -105,30 +105,3 @@ class paillerObj:
                 return i
         return -1
     
-
-p = 113
-q = 109
-values = pk.paillerKeys(p,q)
-n = values.generateN()
-g = values.generateG()
-
-
-x = paillerObj(n, g, p, q)
-x.encrpt(11)
-z = paillerObj(n,g)
-z.encrpt(70)
-print("Encrypted text", x.cipherText)
-x.add(z)
-z = paillerObj(n,g)
-z.encrpt(70)
-print("Encrypted text", x.cipherText)
-x.add(z)
-z = paillerObj(n,g)
-z.encrpt(70)
-print("Encrypted text", x.cipherText)
-x.add(z)
-print("Encrypted text", x.cipherText)
-# x.multiply(2)
-print("Encrypted text", x.cipherText)
-print(x.decrypt())
-
