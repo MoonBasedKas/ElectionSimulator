@@ -5,7 +5,8 @@ import paillerKeys as pk
 
 """
 public key = n, g
-private key = lambda, mu
+private key = lambda, mu 
+We just pass in p and q as private keys they are determined using that.
 """
 class paillerObj:
 
@@ -54,6 +55,7 @@ class paillerObj:
     Decrypts the given cipher text and returns the result.
     """
     def decrypt(self):
+        # Finds the lcm
         lcm = math.lcm(self.p - 1, self.q - 1)
         k = self.L(self.g**lcm)
         k = k % self.n**2
@@ -89,7 +91,7 @@ class paillerObj:
     paillierObj.
     pt = pt + new
     """
-    def addPaillers(self, new):
+    def add(self, new):
         self.cipherText *= new.cipherText
         self.cipherText %= self.n**2
     
@@ -104,40 +106,29 @@ class paillerObj:
         return -1
     
 
-
-pk.paillerKeys()
 p = 113
 q = 109
-# p = 1951
-# q = 1949
-# l = paillerKeys()
-# p = l.p
-# q = l.q
+values = pk.paillerKeys(p,q)
+n = values.generateN()
+g = values.generateG()
 
-x = paillerObj(p, q)
-x.encrpt(11, 5652)
-z = paillerObj(p, q)
-z.encrpt(70, 5652)
+
+x = paillerObj(n, g, p, q)
+x.encrpt(11)
+z = paillerObj(n,g)
+z.encrpt(70)
 print("Encrypted text", x.cipherText)
-x.addPaillers(z)
-z = paillerObj(p, q)
-z.encrpt(70, 5652)
+x.add(z)
+z = paillerObj(n,g)
+z.encrpt(70)
 print("Encrypted text", x.cipherText)
-x.addPaillers(z)
-z = paillerObj(p, q)
-z.encrpt(70, 5652)
+x.add(z)
+z = paillerObj(n,g)
+z.encrpt(70)
 print("Encrypted text", x.cipherText)
-x.addPaillers(z)
+x.add(z)
 print("Encrypted text", x.cipherText)
-# x.multiplyPaillers(2)
+# x.multiply(2)
 print("Encrypted text", x.cipherText)
 print(x.decrypt())
 
-
-# z = 0
-# for i in range(1000):
-#     x = paillerObj(7, 11, 23)
-#     x.encrpt(11, 5652)
-#     if x.decrypt() != 11:
-#         z+=1
-# print(z)

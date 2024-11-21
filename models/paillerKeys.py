@@ -1,3 +1,6 @@
+"""
+A python object which will generate the agreed upon keys.
+"""
 import random
 import math
 from sympy import *
@@ -9,6 +12,8 @@ class paillerKeys:
     """
     Zero arguements will auto generate
     Two arguements will set those two numbers as keys.
+    Four will set all values.
+    p,q,g,n
     """
     def __init__(self, *args):
         if (len(args) == 0):
@@ -18,9 +23,16 @@ class paillerKeys:
                 self.p = random.randint(2, 10000)
             while not isprime(self.p):
                 self.q = random.randint(2, 10000)
-        else:
+        if (len(args) == 2):
             self.p = args[0]
             self.q = args[1]
+        if (len(args) == 4):
+            self.p = args[0]
+            self.q = args[1]
+            self.g = args[2]
+            self.n = args[3]
+        else:
+            print("Invalid arguements provided")
 
     """
     Generates the first public key n for encryption.
