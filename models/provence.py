@@ -17,7 +17,7 @@ class provence:
     def runSimulation(self, delay, variance):
         while self.pop > 0:
             waitTime = random.randint(0, delay - random.randint(0, variance))
-            votes = random.randint(0, self.pop)
+            votes = random.randint(1, self.pop)
             self.pop -= votes
             canidate = random.randint(1,100)
             # Decides what canidate to choose
@@ -29,7 +29,9 @@ class provence:
                 time.sleep(waitTime)
             Secret = pObj.paillerObj(self.n, self.g)
             Secret.encrpt(votes)
-            self.db.insertVotes(canidate, self.name, Secret.cipherText)
+            
+            self.db.insertVotesPT(canidate, self.name, votes)
+            self.db.insertVotesEnc(canidate, self.name, Secret.cipherText) # Why break?
         self.db.closeDB()
 
         pass

@@ -92,7 +92,7 @@ class paillerObj:
     pt = pt + new
     """
     def add(self, new):
-        self.cipherText *= new.cipherText
+        self.cipherText *= new
         self.cipherText %= self.n**2
     
 
