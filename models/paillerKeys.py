@@ -6,7 +6,10 @@ class paillerKeys:
 
     n = 0
     g = 0
-
+    """
+    Zero arguements will auto generate
+    Two arguements will set those two numbers as keys.
+    """
     def __init__(self, *args):
         if (len(args) == 0):
             self.p = 2

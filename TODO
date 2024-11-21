@@ -1,0 +1,8 @@
+- Create socket network star and have semantics that will work.
+
+- Have nodes generate data to send.
+    - Have setting files for each one.
+
+- Connect to a database have store data there
+    - Website
+    - Network simulator
