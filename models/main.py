@@ -7,7 +7,7 @@ import threading
 import random
 
 # keys = paillerKeys.paillerKeys(1009, 1013)
-keys = paillerKeys.paillerKeys(13, 11)
+
 
 def main():
     pop = 10000
@@ -15,7 +15,7 @@ def main():
     # TODO: Write public keys to env file.
     p = 0
     q = 0
-    delay = 5
+    delay = 3
     var = 2
     sys.argv.pop(0) # removes the executable name.
     command = ""
@@ -35,21 +35,20 @@ def main():
             db.DBCon().clean()
             exit()
         elif command == "-h":
-            print("help\n-----")
-            print("-bp   [n]:\tModifies the starting port to n.")
-            print("-n    [n]:\tmodifies the starting amount of nodes to n.")
-            print("-h       :\thelp command.")
-            print("-m [mode]:\tThe mode command")
-            print("-----")
+            print("Read the code or something...")
             print("Shutting down now...")
             exit()
             pass
         else:
             print("Invalid command use -h for help.")
-    prov = [["Cramer", 10], ["Fidel", 10], ["Jonesa", 10], ["Jones", 10]]
+    if p == 0 or q == 0:
+        keys = paillerKeys.paillerKeys()
+    else:
+        keys = paillerKeys.paillerKeys(p, q)
+    prov = [["Cramer", 20], ["Fidel", 20], ["Jonesa", 20], ["Jones", 20]]
     keys.generateN()
     keys.generateG()
-
+    print(keys.g, keys.n)
     setupNormal(prov, keys.g, keys.n, delay, var)
     readResults(keys)
     return 0
@@ -68,7 +67,7 @@ def setupNormal(provences, g, n, delay, var):
             t.join()
 
 
-def readResults(key):
+def readResults(keys):
     taco = paillierObj.paillerObj(keys.n, keys.g, keys.p, keys.q)
     pizza = paillierObj.paillerObj(keys.n, keys.g, keys.p, keys.q)
     pizza.cipherText = -1
@@ -99,6 +98,10 @@ def readResults(key):
     print("Taco Votes:", taco.decrypt(), t)
 
 
+def encryptTest():
+
+
+    return 
 
 
 
