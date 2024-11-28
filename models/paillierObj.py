@@ -105,3 +105,20 @@ class paillerObj:
                 return i
         return -1
     
+# Genertor is not properly generating
+
+# z = paillerObj(247,16477)
+# z = paillerObj(247, 33572) # Bad g
+z = paillerObj(247, 17021) # Bad g
+z.encrpt(34)
+z.p = 13
+z.q = 19
+# x = paillerObj(247, 16477)
+# x = paillerObj(247, 33572) # Bad g
+x = paillerObj(247, 17021) # Bad g
+x.encrpt(20)
+z.add(x.cipherText)
+print(z.decrypt())
+# print(z.decrypt())
+# x = paillerObj(16477, 247)
+# x.encrpt(21)
