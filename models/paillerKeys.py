@@ -45,15 +45,29 @@ class paillerKeys:
     Generates the second public key g for encryption.
     Somewhere in range of 2->n**2 and is invertible when raised to a
     power.
+
+    TODO: Speed up key generation
     """
     def generateG(self):
         processing = true
+        hits = []
+        temp = 0
+        early = False
         while processing:
+            early = False
             self.g = random.randint(2,self.n**2 - 1)
             for i in range(self.n**2):
-                if (self.g**i) % (self.n**2) == 1:
-                    processing = false
+                # It seems to just set g if it fails the test.
+                temp = (self.g**i) % (self.n**2)
+                if temp in hits:
+                    early = True
                     break
+                hits.append(temp) # This is going to be slow.
+
+            if early:
+                pass
+            else:
+                processing = False
         return self.g
     
     def getPrivateP(self):
