@@ -47,40 +47,23 @@ class paillerKeys:
     Somewhere in range of 2->n**2 and is invertible when raised to a
     power.
 
-    TODO: TODO make better algorithm
+    
     """
     def generateG(self):
-        processing = true
-        hits = []
-        temp = 0
-        early = False
-        good = True
-        # tPrimes = []
-        # hits
-        # for i in range()
         lim = self.n**2
-        Totient = self.findTotient()
-        primes = self.getTotientPrimes(Totient)
-        print(primes)
-        print(Totient)
-        temp = 0
-        for q in range(2,lim):
-            good = True
-            i = q
-            for j in primes:
-                temp = i**(Totient//j)
-                if temp % lim == 1:
-                    good = False
-                    break
-            if good == True and self.validateG(i) and i not in primes:
-                self.g = i
-                print(i)
+        q = 0
+        while True:
+            q = random.randint(2, lim - 1)
+            if self.validateG(q):
+                self.g = q
+                print(q)
                 break
         print("key",self.g)
         return self.g
 
     """
-    Just directly test it.
+    Just directly test it. A very lazy solution however, this is also significantly
+    easier to implement than most other solutions and so far appears to be fairly reliable.
     """
     def validateG(self, g):
         test = random.randint(2,self.n)
@@ -92,7 +75,7 @@ class paillerKeys:
         z = sample.decrypt()
         print("testing", z, test, "on", g)
         if z == test:
-            
+            print(g, "was a good choice")
             return True
         return False
 
@@ -157,3 +140,21 @@ class paillerKeys:
     
     def getPrivateP(self):
         return self.q
+
+
+keys = paillerKeys(113,97)
+keys.generateN()
+keys.generateG()
+# keys.g = keys.n + 1
+
+z = pObj.paillerObj(keys.n, keys.g) # Bad g != 8892
+z.encrpt(99)
+z.p = 113
+z.q = 97
+print(z.decrypt())
+# x = paillerObj(247, 16477)
+# x = paillerObj(247, 33572) # Bad g
+x = pObj.paillerObj(keys.n, keys.g) # Bad g
+x.encrpt(147)
+z.add(x.cipherText)
+print(z.decrypt())

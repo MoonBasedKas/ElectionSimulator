@@ -103,22 +103,3 @@ class paillerObj:
             if (((x % y) * (i % y)) % y == 1):
                 return i
         return -1
-    
-# Genertor is not properly generating
-
-# z = paillerObj(247,16477)
-# z = paillerObj(247, 33572) # Bad g
-z = paillerObj(247, 34970) # Bad g != 8892
-z.encrpt(99)
-z.p = 13
-z.q = 19
-print(z.decrypt())
-# x = paillerObj(247, 16477)
-# x = paillerObj(247, 33572) # Bad g
-x = paillerObj(247, 34970) # Bad g
-x.encrpt(147)
-z.add(x.cipherText)
-print(z.decrypt())
-# print(z.decrypt())
-# x = paillerObj(16477, 247)
-# x.encrpt(21)
