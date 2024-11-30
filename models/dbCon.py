@@ -3,11 +3,12 @@ Manages querrying the database however the we do not have to make a lot of queri
 so this is a rather lightweight class.
 """
 import mysql.connector
-import vote
+from models import vote
 
 class DBCon:
     def __init__(self):
-        fp = open("/home/kas/.env/DBE_CONFIG" ,"r")
+        # fp = open("/home/kas/.env/DBE_CONFIG" ,"r")
+        fp = open("DBE_CONFIG", "r")
         lines = fp.readlines()
         user = lines[0].split("=")[1].strip()
         password = lines[1].split("=")[1].strip()

@@ -1,7 +1,7 @@
-import dbCon as db
+from models import dbCon as db
 import time
 import random
-import paillierObj as pObj
+from models import paillierObj as pObj
 
 class provence:
 

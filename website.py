@@ -1,6 +1,8 @@
 from flask import Flask
-from models import dbCon
 from flask import render_template
+from models import dbCon, main, paillierObj, paillerKeys
+
+
 
 app = Flask(__name__)
 
@@ -20,12 +22,14 @@ def api_data():
         print('Received JSON data:', data)
         return 'JSON data received successfully!', 200
     elif request.method == 'GET':
-           db = dbCon.DBCon()
-           z = db.fetchVotesEnc()
-           for i in z:
-                json_data = {}
+            db = dbCon.DBCon()
+            z = db.fetchVotesEnc()
+            json_data = {}
+            ids = []
+            for i in z:
+                ids.append(i.id)
                 json_data[i.id] = {'Canidate':i.canidate, 'Location':i.location,'Votes':i.count}
-
+            json_data[-1] = ids
     return jsonify(json_data)
 
 @app.route("/hi")

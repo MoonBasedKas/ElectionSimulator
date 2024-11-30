@@ -5,3 +5,11 @@ models/__pycache__/dbCon.cpython-310.pyc
 models/__pycache__/paillierObj.cpython-310.pyc
 models/__pycache__/provence.cpython-310.pyc
 models/__pycache__/paillierObj.cpython-39.pyc
+models/DBE_CONFIG
+DBE_CONFIG
+models/__pycache__/dbCon.cpython-39.pyc
+models/__pycache__/paillerKeys.cpython-39.pyc
+models/__pycache__/provence.cpython-39.pyc
+models/__pycache__/vote.cpython-39.pyc
+__pycache__/website.cpython-39.pyc
+models/__pycache__/main.cpython-39.pyc

@@ -1,15 +1,21 @@
-import paillerKeys
-import paillierObj
-import provence
+from models import paillerKeys
+from models import paillierObj
+from models import provence
 import sys
-import dbCon as db
+from models import dbCon as db
 import threading
 import random
 
 # keys = paillerKeys.paillerKeys(1009, 1013)
 
-
+# TODO: Update this to use func call arguements
 def main():
+    sys.argv.pop(0) # removes the executable name.
+    startSimulation(sys.argv)
+
+
+
+def startSimulation(*args):
     pop = 10000
     # Perhaps have the website write these into an env file just like the database
     # TODO: Write public keys to env file.
@@ -17,20 +23,19 @@ def main():
     q = 0
     delay = 3
     var = 2
-    sys.argv.pop(0) # removes the executable name.
     command = ""
-    while len(sys.argv) != 0:
-        command = sys.argv[0]
-        sys.argv.pop(0)
+    while len(args) != 0:
+        command = args[0]
+        args.pop(0)
         if command == "-pop": # set base population
-            pop = int(sys.argv.pop(0))
+            pop = int(args.pop(0))
         elif command == "-private": # p,q
-            p = int(sys.argv.pop(0))
-            q = int(sys.argv.pop(0))
+            p = int(args.pop(0))
+            q = int(args.pop(0))
         elif command == "-d":
-            delay = int(sys.argv.pop(0))
+            delay = int(args.pop(0))
         elif command == "-v":
-            var = int(sys.argv.pop(0))
+            var = int(args.pop(0))
         elif command == "-clean":
             db.DBCon().clean()
             exit()
@@ -51,7 +56,7 @@ def main():
     print(keys.g, keys.n)
     setupNormal(prov, keys.g, keys.n, delay, var)
     readResults(keys)
-    return 0
+
 
 def setupNormal(provences, g, n, delay, var):
     threads = []

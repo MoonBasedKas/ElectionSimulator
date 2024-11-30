@@ -4,7 +4,7 @@ A python object which will generate the agreed upon keys.
 import random
 import math
 from sympy import *
-import paillierObj as pObj
+from models import paillierObj as pObj
 
 class paillerKeys:
 
@@ -140,21 +140,3 @@ class paillerKeys:
     
     def getPrivateP(self):
         return self.q
-
-
-keys = paillerKeys(113,97)
-keys.generateN()
-keys.generateG()
-# keys.g = keys.n + 1
-
-z = pObj.paillerObj(keys.n, keys.g) # Bad g != 8892
-z.encrpt(99)
-z.p = 113
-z.q = 97
-print(z.decrypt())
-# x = paillerObj(247, 16477)
-# x = paillerObj(247, 33572) # Bad g
-x = pObj.paillerObj(keys.n, keys.g) # Bad g
-x.encrpt(147)
-z.add(x.cipherText)
-print(z.decrypt())
