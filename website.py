@@ -4,17 +4,18 @@ from models import dbCon, main, paillierObj, paillerKeys
 
 
 
-app = Flask(__name__)
 
-@app.route('/')
-@app.route('/<name>')
-def Welcome(name = None):
-    return render_template('index.html', person=name)
 
 from flask import Flask, jsonify, request
  
 app = Flask(__name__)
- 
+
+
+@app.route('/')
+@app.route('/home')
+def Welcome(name = None):
+    return render_template('index.html', person=name)
+
 @app.route('/api/data', methods=['GET', 'POST'])  
 def api_data():
     if request.method == 'POST':
