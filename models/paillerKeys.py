@@ -17,6 +17,9 @@ class paillerKeys:
     p,q,g,n
     """
     def __init__(self, *args):
+        # Formal private keys
+        self.mu = 0
+        self.l = 0
         if (len(args) == 0):
             self.p = 2
             self.q = 2

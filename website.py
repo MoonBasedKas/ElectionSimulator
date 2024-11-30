@@ -21,20 +21,74 @@ app = Flask(__name__)
 def Welcome():
     return render_template('home.html')
 
+"""
+Directing to this page will update the keys and start the simulation
+"""
 @app.route('/start', methods=['GET'])
-def Welcome():
+def start():
     db.clean() # Clean out old results if any
     args = [] # Simulation args
-    
-    return render_template('start.html')
+    keys = main.startSimulation() # Load arguments as if cmd line args
+    return render_template('start.html') # Forward to new page
 
 @app.route('/homomorphism')
 def homo():
     return render_template('viewEnc.html')
 
 @app.route('/voting')
-def vote():
-    return render_template('votePannel.html')
+def vote(vote = None):
+    names = ["Cramer", "Jones", "Jonesa", "Fidel", "Speare", "Wier", "Workman"]
+    votes = []
+    for i in names:
+        # location, taco, pizza, percent
+        votes.append([i, -1, -1, 50, "Neither"])
+    data = db.fetchVotesEnc()
+    # Apply the homomorphic calculations
+    for j in data:
+        for i in votes:
+            if i[0] == j.location:
+                if j.canidate == "taco":
+                    if i[1] == -1:
+                        i[1] = j.votes
+                    else:
+                        i[1] = (i[1] * j.votes) % keys.n**2
+                elif j.canidate == "pizza":
+                    if i[2] == -1:
+                        i[2] = j.votes
+                    else:
+                        i[2] = (i[2] * j.votes) % keys.n**2
+                break
+    # Decrypt
+    temp = paillierObj.paillerObj(keys.n, keys.g)
+    temp.p = keys.p
+    temp.q = keys.q
+    for j in data:
+        # CLear
+        if j[1] != -1:
+            temp.cipherText = j[1]
+            j[1] = temp.decrypt()
+        else:
+            j[1] = 0
+
+        if j[2] != -1:
+            temp.cipherText = j[2]
+            j[2] = temp.decrypt()
+        else:
+            j[2] = 0
+        
+    
+    for j in data:
+        total = j[1] + j[2]
+        percent = j[1] // total
+        j[3] = percent
+        if j[1] > j[2]:
+            j[4] = "Taco"
+        elif j[2] > j[1]:
+            j[4] = "Pizza"
+
+                        
+
+    return render_template('votePannel.html', vote = votes)
 
 
 """

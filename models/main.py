@@ -21,6 +21,7 @@ def startSimulation(*args):
     # TODO: Write public keys to env file.
     p = 0
     q = 0
+    g = 0
     delay = 3
     var = 2
     command = ""
@@ -32,6 +33,8 @@ def startSimulation(*args):
         elif command == "-private": # p,q
             p = int(args.pop(0))
             q = int(args.pop(0))
+        elif command == "-public":
+            g = int(args.pop(0))
         elif command == "-d":
             delay = int(args.pop(0))
         elif command == "-v":
@@ -46,19 +49,27 @@ def startSimulation(*args):
             pass
         else:
             print("Invalid command use -h for help.")
-    if p == 0 or q == 0:
+    if p == 0 or q == 0: # This should never be called
         keys = paillerKeys.paillerKeys()
+        keys.generateN()
+        keys.generateG()
+        
     else:
         keys = paillerKeys.paillerKeys(p, q)
+        keys.generateN()
+        if g == 0:
+            keys.generateG()
+        else:
+            keys.g = g
+        
     prov = [["Cramer", pop//7], ["Fidel", pop//7], ["Jonesa", pop//7], ["Jones", pop//7]]
     prov.append(["Wier", pop//7])
     prov.append(["Speare", pop//7])
     prov.append(["Workman", pop//7])
-    keys.generateN()
-    keys.generateG()
-    print(keys.g, keys.n)
+    # print(keys.g, keys.n)
     setupNormal(prov, keys.g, keys.n, delay, var)
-    readResults(keys)
+    # readResults(keys)
+    return keys # Return generated keys
 
 
 def setupNormal(provences, g, n, delay, var):
@@ -70,9 +81,7 @@ def setupNormal(provences, g, n, delay, var):
         x = threading.Thread(target=temp.runSimulation, args=(delay, var,))
         x.start()
         threads.append(x)
-    for t in threads:
-        if t != None:
-            t.join()
+    return 
 
 
 def readResults(keys):

@@ -10,11 +10,13 @@
 <body>
     <h2>The great Taco Vs Pizza vote.</h2>
     <div class="container">
+        {% for i in votes%}
         <div class="provence">
             Prov name<br>
             <progress value="0" max="100"></progress><br>
             X is currently winning!
         </div>
+        {% endfor %}
     </div>
 
 </body>
