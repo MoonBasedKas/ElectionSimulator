@@ -50,7 +50,7 @@ def startSimulation(*args):
         keys = paillerKeys.paillerKeys()
     else:
         keys = paillerKeys.paillerKeys(p, q)
-    prov = [["Cramer", 20], ["Fidel", 20], ["Jonesa", 20], ["Jones", 20]]
+    prov = [["Cramer", 2500], ["Fidel", 2500], ["Jonesa", 2500], ["Jones", 2500]]
     keys.generateN()
     keys.generateG()
     print(keys.g, keys.n)
