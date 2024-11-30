@@ -7,15 +7,39 @@ from models import dbCon, main, paillierObj, paillerKeys
 
 
 from flask import Flask, jsonify, request
- 
+keys = paillerKeys.paillerKeys() # Update this
+db = dbCon.DBCon() # Connect to the database
 app = Flask(__name__)
 
 
+# @app.route('/home')
+# def Welcome(name = None):
+#     return render_template('index.html', person=name)
+
 @app.route('/')
 @app.route('/home')
-def Welcome(name = None):
-    return render_template('index.html', person=name)
+def Welcome():
+    return render_template('home.html')
 
+@app.route('/start', methods=['GET'])
+def Welcome():
+    db.clean() # Clean out old results if any
+    args = [] # Simulation args
+    
+    return render_template('start.html')
+
+@app.route('/homomorphism')
+def homo():
+    return render_template('viewEnc.html')
+
+@app.route('/voting')
+def vote():
+    return render_template('votePannel.html')
+
+
+"""
+Old and outdated will remove and just rely upon jynxy
+"""
 @app.route('/api/data', methods=['GET', 'POST'])  
 def api_data():
     if request.method == 'POST':
