@@ -12,9 +12,10 @@ def main():
 
 
 """
-Starts the simulation itself.
+Starts the simulation itself. Inputs a list structured as if they were command line arguments.
 """
-def startSimulation(*args):
+def startSimulation(args):
+    print(args)
     pop = 10000
     p = 0
     q = 0
@@ -78,7 +79,7 @@ def setupNormal(provences, g, n, delay, var):
         data = provences.pop(0)
         temp = provence.provence(data[1], data[0], g, n, ["Taco", "Pizza"], [50,50])
 
-        x = threading.Thread(target=temp.runSimulation, args=(delay, var,))
+        x = threading.Thread(target=temp.runSimulation, args=(delay, var,), name=data[0])
         x.start()
         threads.append(x)
     return 

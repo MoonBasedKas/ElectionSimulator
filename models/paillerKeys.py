@@ -59,9 +59,7 @@ class paillerKeys:
             q = random.randint(2, lim - 1)
             if self.validateG(q):
                 self.g = q
-                print(q)
                 break
-        print("key",self.g)
         return self.g
 
     """
@@ -76,9 +74,7 @@ class paillerKeys:
         test = 2
         sample.encrpt(test)
         z = sample.decrypt()
-        print("testing", z, test, "on", g)
         if z == test:
-            print(g, "was a good choice")
             return True
         return False
 

@@ -1,39 +1,41 @@
 <!doctype html>
+
 <head>
-<title>Election settings</title>
+    <title>Election settings</title>
 </head>
+
 <body>
-<h1>Welcome!</h1>
-<p>
-Before we start our election simulation I'd like to ask 
-you about a few settings you are interested in. Please remember 
-the private key and public key when multiplied must be 
-greater than the total Population and must be prime. Lastly,
-before starting remember to start up a mysql database and use the db.sql 
-script to create our database.
+    <h1>Welcome!</h1>
+    <p>
+        Before we start our election simulation I'd like to ask
+        you about a few settings you are interested in. Please remember
+        the private key and public key when multiplied must be
+        greater than the total Population and must be prime. Lastly,
+        before starting remember to start up a mysql database and use the db.sql
+        script to create our database.
 
-</p>
-<form action="/start" method="get">
-<label>Total Population</label>
-<input type="textbox" id="pop"><br>
+    </p>
+    <form action="/start" method="get">
+        <label>Total Population</label>
+        <input type="textbox" id="pop" name="pop"><br>
 
-<label>Private key p*</label>
-<input type="textbox" id="p"><br>
-
-
-<label>Private key q*</label>
-<input type="textbox" id="q"><br>
+        <label>Private key p*</label>
+        <input type="textbox" id="p" name="p"><br>
 
 
-<label>Public key g</label>
-<input type="textbox" id="g"><br>
-
-<label>Vote Batch Delay</label>
-<input type="textbox" id="delay"><br>
-
-<input type="submit" value="START">
+        <label>Private key q*</label>
+        <input type="textbox" id="q" name="q"><br>
 
 
-</form>
+        <label>Public key g</label>
+        <input type="textbox" id="g" name="g"><br>
+
+        <label>Vote Batch Delay</label>
+        <input type="textbox" id="delay" name="delay"><br>
+
+        <input type="submit" value="START">
+
+
+    </form>
 
 </body>

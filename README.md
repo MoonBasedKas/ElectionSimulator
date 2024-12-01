@@ -3,43 +3,30 @@ The goal of this project is to simulate applying paillier encyrption into electi
 simulate some flaws with this and explore solutions to flaws.
 
 # Scenario
-The country of Skyrim is having an election in the year 20XX AD. Skyrim is broken up into 9 holds and follows the electoral 
-college system of voting; each provence follows the all or nothing system.
-There is numerous polling locations however each polling location is attached to a central 
-count system where they pass their information towards. The election is between the two major parties and third party
-canidates will not be considered. We have the West Party whose running candiate Jarl Balgruuf the greater and the 
-East party whose candiate is Funny Valentine. For this scenario their policies or any real world political affiliation 
-does not matter.
+Tech students must always ask the question Taco or Pizza so to put a definitive end to this we've decided to simulate a vote. 
+The vote will use random buildings from tech as provences and tally it. Encryption using paillier and to showcase how it works.
 
-We will simulate this network as a series of sockets connected. There will be 9 sockets each of which connected to a 
-central processing location. We will have the biases towards each region assigned within a text file. Skyrim will 
-have a rather low population of less than 10,000 thus we can generate keys which are workable within that range. 
-This is mainly done so we can speed up the speed of encryption as paillier is VERY SLOW especially with the use of 
-python as a language.
+
+# Starting
+
+To start the simulation you must first have a few packages installed. mysql connector, flask, mysql or mariadb, and python of course.
+You'll want to set up an env file in the same folder as website.py first line will be the user=x and then second line password=y.
+Finally to run you will use the following command:
+
+flask --app website run
+
+# Technical set up
+The simulator uses 3 parts. A database, a flask servlet, and vote generators. Vote generators will send their voting information
+directly to the database while the flask servlet will collect the data from the database and use jinja templates to showcase the information 
+we've generated and passed on. When running you'll visit the website localhost:5000 and it'll direct you to the set up page. Once it's started 
+it'll direct you to another page where you can click start and advance to the actual simulator. To view updates you'll want to refresh the page.
 
 # Scenario 1.1
 No malicous actors exist within the network.
 
 # Scenario 1.2
-A single malicous actor exists within the network within a randomly assigned provence. To simulate this 
-the malicous actor will be able to perform a rely attack.
+Some malicous actor is on the network and will send repeat messages. Represented by a vote station occasionally sending a second insertion.
 
-# Scenario 1.3
-A given malicous actor can generate a valid count and transmit over the network for a choosen political party.
-
-# Hold weights
-Whiterun: -
-Falkreath: -
-Winterhold: -
-The Rift: -
-Eastmarch: - 
-Haafingar: -
-The Pale: -
-The Reach: - 
-Hjaalmarch: -
-
-Population is based off of a percentage of the total hold weights and an individual multiplied by the total 
-population rounded down.
 
 # Gui
 Gui will be implemented using a python flask server. This is to give more immersion as election results as they are
@@ -47,3 +34,4 @@ tallied will be posted to a website the actual results will only be posted durin
 
 In the back ground there will also be an option that shows the central polling station's count as well 
 as the encrypted values coming into it.
+

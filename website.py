@@ -28,7 +28,42 @@ Directing to this page will update the keys and start the simulation
 def start():
     db.clean() # Clean out old results if any
     args = [] # Simulation args
-    keys = main.startSimulation() # Load arguments as if cmd line args
+    pop = request.args.get('pop', "10000")
+    p = request.args.get('p', "1")
+    q = request.args.get('q', "1")
+    g = request.args.get('g', "1")
+    delay = request.args.get('delay', "1")
+    if pop != "":
+        pop = int(pop)
+        if pop != 10000:
+            args.append("-pop")
+            args.append(pop)
+    if p != "" and q != "":
+        p = int(p)
+        q = int(q)
+        if p > 1 and q > 1:
+            args.append("-private")
+            args.append(p)
+            args.append(q)
+            if g != "":
+                g = int(g)
+                if g > 1:
+                    args.append("-public")
+                    args.append(g)    
+    if delay != "":
+        delay = int(delay)
+        if delay > 1:
+            args.append("-d")
+            args.append(delay)
+    
+    # Place into call args
+
+    
+
+    
+    global keys 
+    keys = main.startSimulation(args) # Load arguments as if cmd line args
+    print(keys.g, keys.n, keys.p, keys.q)
     return render_template('start.html') # Forward to new page
 
 @app.route('/homomorphism')
