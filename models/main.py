@@ -21,7 +21,7 @@ def startSimulation(args):
     q = 0
     g = 0
     delay = 3
-    var = 2
+    var = 0
     command = ""
     while len(args) != 0:
         command = args[0]
