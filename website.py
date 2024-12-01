@@ -133,23 +133,3 @@ def vote(vote = None, sum = None):
 
     return render_template('votePannel.html', vote = votes, sum = total)
 
-
-"""
-Old and outdated will remove and just rely upon jynxy
-"""
-@app.route('/api/data', methods=['GET', 'POST'])  
-def api_data():
-    if request.method == 'POST':
-        data = request.json  
-        print('Received JSON data:', data)
-        return 'JSON data received successfully!', 200
-    elif request.method == 'GET':
-            db = dbCon.DBCon()
-            z = db.fetchVotesEnc()
-            json_data = {}
-            ids = []
-            for i in z:
-                ids.append(i.id)
-                json_data[i.id] = {'Canidate':i.canidate, 'Location':i.location,'Votes':i.count}
-            json_data[-1] = ids
-    return jsonify(json_data)
