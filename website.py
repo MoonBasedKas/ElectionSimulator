@@ -82,23 +82,22 @@ def vote(vote = None):
     for j in data:
         for i in votes:
             if i[0] == j.location:
-                if j.canidate == "taco":
+                if j.canidate == "Taco":
                     if i[1] == -1:
-                        i[1] = j.votes
+                        i[1] = j.count
                     else:
-                        i[1] = (i[1] * j.votes) % keys.n**2
-                elif j.canidate == "pizza":
+                        i[1] = (i[1] * j.count) % keys.n**2
+                elif j.canidate == "Pizza":
                     if i[2] == -1:
-                        i[2] = j.votes
+                        i[2] = j.count
                     else:
-                        i[2] = (i[2] * j.votes) % keys.n**2
+                        i[2] = (i[2] * j.count) % keys.n**2
                 break
     # Decrypt
     temp = paillierObj.paillerObj(keys.n, keys.g)
     temp.p = keys.p
     temp.q = keys.q
     for j in votes:
-        print(votes)
         # CLear
         if j[1] != -1:
             temp.cipherText = j[1]
@@ -116,13 +115,16 @@ def vote(vote = None):
     for j in votes:
         total = j[1] + j[2]
         if total != 0:
-            percent = j[1] // total
+            # Determines taco percentage
+            percent = j[1] / total
+            percent *= 100
+            percent = round(percent)
             j[3] = percent
             if j[1] > j[2]:
                 j[4] = "Taco"
             elif j[2] > j[1]:
                 j[4] = "Pizza"
-
+    print(votes)
                         
 
     return render_template('votePannel.html', vote = votes)
@@ -147,7 +149,3 @@ def api_data():
                 json_data[i.id] = {'Canidate':i.canidate, 'Location':i.location,'Votes':i.count}
             json_data[-1] = ids
     return jsonify(json_data)
-
-@app.route("/hi")
-def hello():
-    return "<p>Hello!</p>"
