@@ -5,7 +5,7 @@ simulate some flaws with this and explore solutions to flaws.
 # Scenario
 Tech students must always ask the question Taco or Pizza so to put a definitive end to this we've decided to simulate a vote. 
 The vote will use random buildings from tech as provences and tally it. Encryption using paillier and to showcase how it works.
-
+Each building is worth 1 electoral vote and is what decides the winner of this contest rather than the popular vote.
 
 # Starting
 

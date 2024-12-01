@@ -11,6 +11,14 @@
 
 <body>
     <h2>The Great Soccoro Taco Vs Pizza Vote.</h2>
+
+    <div class="Vote Info">
+        Total Votes: {{sum[0] + sum[1]}}<br>
+        Taco: {{sum[0]}} vs Pizza: {{sum[1]}}<br>
+        <progress value={{winP}} max="100"></progress><br>
+        Election Winner: {{win}}!
+    </div>
+
     <div class="container">
         {% for i in vote%}
         <div class="provence">
@@ -24,5 +32,6 @@
         <br>
         {% endfor %}
     </div>
+
 
 </body>

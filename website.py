@@ -70,10 +70,11 @@ def pa():
     return render_template('UsingPaillier.html')
 
 @app.route('/voting')
-def vote(vote = None, sum = None):
+def vote(vote = None, sum = None, win = None, winP = 50):
     names = ["Cramer", "Jones", "Jonesa", "Fidel", "Speare", "Wier", "Workman"]
     votes = []
     total = [0,0]
+    win = ""
     for i in names:
         # location, taco, pizza, percent
         votes.append([i, -1, -1, 50, "Neither"])
@@ -126,10 +127,28 @@ def vote(vote = None, sum = None):
             elif j[2] > j[1]:
                 j[4] = "Pizza"
     print(votes)
-
+    total = [0,0]
     for j in votes:
         total[0] += j[1]
         total[1] += j[2]                        
+    
+    pizza = 0
+    taco = 0
+    for j in votes:
+        if j[4] == "Taco":
+            taco += 1
+        else:
+            pizza += 1
 
-    return render_template('votePannel.html', vote = votes, sum = total)
+    if taco > pizza:
+        winner = "Taco"
+    else:
+        winner = "Pizza"
+
+    totalVotes = total[1] + total[0]
+    if totalVotes != 0:
+        per = total[0] / totalVotes
+        per *= 100
+        per = round(per)
+    return render_template('votePannel.html', vote = votes, sum = total, win = winner, winP = per)
 
