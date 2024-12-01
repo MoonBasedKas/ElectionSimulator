@@ -56,14 +56,9 @@ def start():
             args.append("-d")
             args.append(delay)
     
-    # Place into call args
-
-    
-
-    
     global keys 
     keys = main.startSimulation(args) # Load arguments as if cmd line args
-    print(keys.g, keys.n, keys.p, keys.q)
+    print(f"Public key g: {keys.g}, public key n: {keys.n}, p: {keys.p}, q: {keys.q}")
     return render_template('start.html') # Forward to new page
 
 @app.route('/homomorphism')
@@ -71,9 +66,10 @@ def homo():
     return render_template('viewEnc.html')
 
 @app.route('/voting')
-def vote(vote = None):
+def vote(vote = None, sum = None):
     names = ["Cramer", "Jones", "Jonesa", "Fidel", "Speare", "Wier", "Workman"]
     votes = []
+    total = [0,0]
     for i in names:
         # location, taco, pizza, percent
         votes.append([i, -1, -1, 50, "Neither"])
@@ -99,6 +95,7 @@ def vote(vote = None):
     temp.q = keys.q
     for j in votes:
         # CLear
+        print("Unencrypted values",j)
         if j[1] != -1:
             temp.cipherText = j[1]
             j[1] = temp.decrypt()
@@ -125,9 +122,12 @@ def vote(vote = None):
             elif j[2] > j[1]:
                 j[4] = "Pizza"
     print(votes)
-                        
 
-    return render_template('votePannel.html', vote = votes)
+    for j in votes:
+        total[0] += j[1]
+        total[1] += j[2]                        
+
+    return render_template('votePannel.html', vote = votes, sum = total)
 
 
 """

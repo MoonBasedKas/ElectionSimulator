@@ -9,13 +9,14 @@ The vote will use random buildings from tech as provences and tally it. Encrypti
 
 # Starting
 
-To start the simulation you must first have a few packages installed. mysql connector, flask, mysql or mariadb, and python of course.
+To start the simulation you must first have a few packages installed. mysql connector, flask, mysql or mariadb, a web browser (obviously) and python of course.
 You'll want to set up an env file in the same folder as website.py first line will be the user=x and then second line password=y.
 Finally to run you will use the following command:
 
 flask --app website run
 
-Everytime you want to restart a simulation you must go through the main page to create the keys and start the simulation.
+To run the website you'll want to visit localhost:5000 and fill out the form. Once you've filled out the form it'll take you to a confirmation page.
+Click the hyperlink and you'll be able to see the start of the election simulator.
 
 # Technical set up
 The simulator uses 3 parts. A database, a flask servlet, and vote generators. Vote generators will send their voting information

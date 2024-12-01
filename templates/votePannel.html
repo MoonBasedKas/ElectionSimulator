@@ -1,21 +1,27 @@
 <!doctype html>
+
 <head>
-<title>The race progress</title>
-<style>
-</style>
-<script>
-    // We might not need this here
-</script>
+    <title>The race progress</title>
+    <style>
+    </style>
+    <script>
+        // We might not need this here
+    </script>
 </head>
+
 <body>
-    <h2>The great Taco Vs Pizza vote.</h2>
+    <h2>The Great Soccoro Taco Vs Pizza Vote.</h2>
     <div class="container">
-        {% for i in votes%}
+        {% for i in vote%}
         <div class="provence">
-            Prov name<br>
-            <progress value="0" max="100"></progress><br>
-            X is currently winning!
+            <h4>{{i[0]}}</h4><br>
+            Taco Votes: {{i[1]}} <br>
+            Pizza Votes: {{i[2]}} <br>
+            <progress value={{i[3]}} max="100"></progress><br>
+            {{i[4]}} is currently winning!
         </div>
+        <br>
+        <br>
         {% endfor %}
     </div>
 

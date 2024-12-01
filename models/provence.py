@@ -7,6 +7,7 @@ class provence:
 
     def __init__(self, pop, name, g, n, canidates, bias) -> None:
         self.pop = pop
+        print(pop)
         self.name = name
         self.canidates = canidates
         self.bias = bias
