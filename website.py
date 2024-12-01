@@ -65,6 +65,10 @@ def start():
 def homo():
     return render_template('viewEnc.html')
 
+@app.route('/examplePailler')
+def pa():
+    return render_template('UsingPaillier.html')
+
 @app.route('/voting')
 def vote(vote = None, sum = None):
     names = ["Cramer", "Jones", "Jonesa", "Fidel", "Speare", "Wier", "Workman"]

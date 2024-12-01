@@ -1,0 +1,59 @@
+<!doctype html>
+
+<head>
+    <title>Using Pailler</title>
+    <script src="static/pailler.js"></script>
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+
+<body>
+    <h1>Playing with Pailler!</h1>
+    <div id="descP" name="descP">
+        <p>
+            Pailler may be daunting at first it is easy once you mess around with it. This page is to allow you to play
+            around with pailler encryption. To begin we will want to encrypt pick our keys. I assume you have a g
+            in mind however, you can see how poor choices of g can cause problems. A known working pair of keys
+            p = 5, q = 7, and g = 88. While pailler encryption also has n as public key n = p * q thus, its not
+            necessary.<br>
+
+            NOTE: This page uses big int for javascript. Your browser may not support this and the page will not
+            properly work. This will also break if your number is too large even for the big int datatype.
+            This is not a problem for the election simulator as python handles that for us.
+        </p>
+
+        Pick a private key p:
+        <input type="textbox" id="p" name="p"><br>
+        Pick a private key q:
+        <input type="textbox" id="q" name="q"><br>
+        Pick a public key g:
+        <input type="textbox" id="g" name="g"><br>
+        Pick a plaintext to encrypt:
+        <input type="textbox" id="pt" name="pt"><br>
+        <input type="button" onclick="loudEncrypt()" value="Encrypt!">
+    </div>
+    <p id="firstValue" name="firstValue">
+
+    </p>
+
+    <div id="AddingEnc" style="visibility: hidden;">
+        Now with your new plaintext value we can modify it and apply homomoprishm. An interesting property you may
+        notice is that we are limited by our n value. However, since its recommended to have very large choices of p and
+        q
+        for many pratical applications this won't be an issue.<br>
+        Pick a plaintext to encrypt:
+        <input type="textbox" id="ptPrime" name="ptPrime"> <br>
+        <input type="button" onclick=" homomorphicAddition()" value="Add!">
+        <div id="result" name="result">
+
+        </div>
+    </div>
+
+    <div id="dec" style="visibility: hidden;">
+        To confirm that it's successful we can also decrypt it.
+        <input type="button" onclick="decrypt()" value="Decrypt!">
+        <div id="resultDec" name="resultDec">
+        </div>
+    </div>
+
+
+</body>

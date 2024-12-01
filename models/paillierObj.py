@@ -74,7 +74,6 @@ class paillerObj:
     def L(self, mu): 
         x = mu - 1
         x //= self.n
-        
         return x
     
     """
