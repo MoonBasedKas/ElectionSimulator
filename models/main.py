@@ -6,19 +6,16 @@ from models import dbCon as db
 import threading
 import random
 
-# keys = paillerKeys.paillerKeys(1009, 1013)
-
-# TODO: Update this to use func call arguements
 def main():
     sys.argv.pop(0) # removes the executable name.
     startSimulation(sys.argv)
 
 
-
+"""
+Starts the simulation itself.
+"""
 def startSimulation(*args):
     pop = 10000
-    # Perhaps have the website write these into an env file just like the database
-    # TODO: Write public keys to env file.
     p = 0
     q = 0
     g = 0
@@ -72,6 +69,9 @@ def startSimulation(*args):
     return keys # Return generated keys
 
 
+"""
+Creates the threads to begin sending their votes.
+"""
 def setupNormal(provences, g, n, delay, var):
     threads = []
     while provences != []:
@@ -83,7 +83,9 @@ def setupNormal(provences, g, n, delay, var):
         threads.append(x)
     return 
 
-
+"""
+Prints out the results of the election.
+"""
 def readResults(keys):
     taco = paillierObj.paillerObj(keys.n, keys.g, keys.p, keys.q)
     pizza = paillierObj.paillerObj(keys.n, keys.g, keys.p, keys.q)
@@ -114,11 +116,6 @@ def readResults(keys):
     print("Pizza Votes:", pizza.decrypt(), p)
     print("Taco Votes:", taco.decrypt(), t)
 
-
-def encryptTest():
-
-
-    return 
 
 
 
