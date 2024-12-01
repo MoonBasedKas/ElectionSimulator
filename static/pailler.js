@@ -111,6 +111,6 @@ function homomorphicAddition() {
     cipherText = Encrypt(pt)
     document.getElementById("result").innerHTML += "E(pt) = " + cipherText + "<br>"
     document.getElementById("result").innerHTML += "Operation: " + ct + " * " + cipherText + " = "
-    ct = (ct * cipherText)
+    ct = (ct * cipherText) % BigInt(n ** 2)
     document.getElementById("result").innerHTML += ct + "<br>"
 }

@@ -61,9 +61,41 @@ def start():
     print(f"Public key g: {keys.g}, public key n: {keys.n}, p: {keys.p}, q: {keys.q}")
     return render_template('start.html') # Forward to new page
 
-@app.route('/homomorphism')
-def homo():
-    return render_template('viewEnc.html')
+@app.route('/voteLog')
+def vLog(tacoVote = None, firstTaco = None, tacoPT = None, nsq = None, pizzaVote = None, firstPizza = None, pizzaPT = None):
+    data = db.fetchVotesEnc()
+    # Apply the homomorphic calculations
+    firstTaco = -1
+    firstPizza = -1
+    tacoVote = []
+    pizzaVote = []
+    nsq = keys.n ** 2
+    for j in data:
+        if j.canidate == "Taco":
+            if firstTaco == -1:
+                firstTaco = j.count
+            else:
+                tacoVote.append(j.count)
+        else:
+            if firstPizza == -1:
+                firstPizza = j.count
+            else:
+                pizzaVote.append(j.count)
+    
+    temp = paillierObj.paillerObj(keys.n, keys.g)
+    temp.p = keys.p
+    temp.q = keys.q
+    temp.cipherText = firstTaco
+    # Sum up values then decrypt
+    for i in tacoVote:
+        temp.add(i)
+    tacoPT = temp.decrypt()
+    temp.cipherText = firstPizza
+    for i in tacoVote:
+        temp.add(i)
+    pizzaPT = temp.decrypt()
+
+    return render_template('TotalVoteLog.html', tacoVote=tacoVote, firstTaco=firstTaco, tacoPT=tacoPT, nsq=nsq, pizzaVote=pizzaVote, firstPizza=firstPizza,pizzaPT=pizzaPT)
 
 @app.route('/examplePailler')
 def pa():

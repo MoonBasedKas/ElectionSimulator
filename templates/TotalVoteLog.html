@@ -1,0 +1,47 @@
+<!doctype html>
+
+<head>
+    <title>The race progress</title>
+    <style>
+    </style>
+    <script>
+        // We might not need this here
+    </script>
+</head>
+
+<body>
+    <h2>Total Vote Log</h2>
+    <div>
+        <div id="taco" class="log">
+            <h3>Taco Vote Log</h3>
+            {% set ns = namespace() %}
+            Inital Value = {{firstTaco}}<br>
+            {% set ns.ct = firstTaco %}
+            {% for i in tacoVote %}
+            New Value = {{ns.ct}} * {{i}} mod {{nsq}}<br>
+            {% set ns.ct = ns.ct * i %}
+            {% set ns.ct = ns.ct % nsq %}
+            {% endfor %}
+            Final Cipher Text = {{ns.ct}} <br>
+            Resulting Plain Text = {{tacoPT}}
+        </div>
+
+        <div id="pizza" class="log">
+            <h3>Pizza Vote Log</h3>
+            {% set ns = namespace() %}
+            Inital Value = {{firstPizza}}<br>
+            {% set ns.ct = firstTaco %}
+            {% for i in tacoVote %}
+            New Value = {{ns.ct}} * {{i}} mod {{nsq}}<br>
+            {% set ns.ct = ns.ct * i %}
+            {% set ns.ct = ns.ct % nsq %}
+            {% endfor %}
+            Final Cipher Text = {{ns.ct}} <br>
+            Resulting Plain Text = {{pizzaPT}}
+        </div>
+    </div>
+
+
+
+
+</body>
