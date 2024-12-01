@@ -15,6 +15,8 @@ Finally to run you will use the following command:
 
 flask --app website run
 
+Everytime you want to restart a simulation you must go through the main page to create the keys and start the simulation.
+
 # Technical set up
 The simulator uses 3 parts. A database, a flask servlet, and vote generators. Vote generators will send their voting information
 directly to the database while the flask servlet will collect the data from the database and use jinja templates to showcase the information 

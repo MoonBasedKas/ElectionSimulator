@@ -97,7 +97,8 @@ def vote(vote = None):
     temp = paillierObj.paillerObj(keys.n, keys.g)
     temp.p = keys.p
     temp.q = keys.q
-    for j in data:
+    for j in votes:
+        print(votes)
         # CLear
         if j[1] != -1:
             temp.cipherText = j[1]
@@ -112,14 +113,15 @@ def vote(vote = None):
             j[2] = 0
         
     
-    for j in data:
+    for j in votes:
         total = j[1] + j[2]
-        percent = j[1] // total
-        j[3] = percent
-        if j[1] > j[2]:
-            j[4] = "Taco"
-        elif j[2] > j[1]:
-            j[4] = "Pizza"
+        if total != 0:
+            percent = j[1] // total
+            j[3] = percent
+            if j[1] > j[2]:
+                j[4] = "Taco"
+            elif j[2] > j[1]:
+                j[4] = "Pizza"
 
                         
 
