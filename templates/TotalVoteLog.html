@@ -29,8 +29,8 @@
             <h3 class="subTitle">Pizza Vote Log</h3>
             {% set ns = namespace() %}
             Inital Value = {{firstPizza}}<br>
-            {% set ns.ct = firstTaco %}
-            {% for i in tacoVote %}
+            {% set ns.ct = firstPizza%}
+            {% for i in pizzaVote %}
             New Value = {{ns.ct}} * {{i}} mod {{nsq}}<br>
             {% set ns.ct = ns.ct * i %}
             {% set ns.ct = ns.ct % nsq %}
