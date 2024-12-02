@@ -33,7 +33,7 @@ function loudEncrypt() {
         r = BigInt(Math.ceil(r)) // we do not want zero anyways.
     }
     r = BigInt(r)
-    explaition.innerHTML += "First let's pick a random r. We want this r to exist within 0 < r < n and have the following property: gcd(r, n) = 1 <br>"
+    explaition.innerHTML = "First let's pick a random r. We want this r to exist within 0 < r < n and have the following property: gcd(r, n) = 1 <br>"
     explaition.innerHTML += "Let's use the r " + r + "<br>"
     explaition.innerHTML += "Next we will want to compute the following <br> g^pt * r^n."
     let cipherText = BigInt(((BigInt(g ** pt)) * BigInt((r ** BigInt(n)))))
@@ -43,11 +43,11 @@ function loudEncrypt() {
     ct = cipherText
     explaition.innerHTML += "Resulting in our final answer of " + cipherText
     // Remove visibility
-    document.getElementById("descP").style.visibility = "hidden"
+    // document.getElementById("descP").style.visibility = "hidden"
 
     document.getElementById("dec").style.visibility = "visible"
     document.getElementById("AddingEnc").style.visibility = "visible"
-    document.getElementById("result").innerHTML = "New Cipher text: " + ct + "<br>"
+    document.getElementById("result").innerHTML = "Starting Cipher text: " + ct + "<br>"
 }
 
 function modInverse(x, y) {
@@ -64,7 +64,7 @@ function modInverse(x, y) {
 
 function decrypt() {
     write = document.getElementById("resultDec")
-    write.innerHTML += "First we will want to computer the least common multiple of (p - 1, q - 1)<br>"
+    write.innerHTML = "First we will want to computer the least common multiple of (p - 1, q - 1)<br>"
     lambda = BigInt(lcm(p - 1, q - 1))
     write.innerHTML += "lcm = " + lambda + "<br>"
     let pt = L(BigInt(g ** lambda))
@@ -83,7 +83,7 @@ function decrypt() {
     write.innerHTML += "Successfully giving us our plain text result of " + pt
     console.log(pt)
 
-    document.getElementById("AddingEnc").style.visibility = "hidden"
+    // document.getElementById("AddingEnc").style.visibility = "hidden"
 }
 
 function L(mu) {
@@ -113,4 +113,5 @@ function homomorphicAddition() {
     document.getElementById("result").innerHTML += "Operation: " + ct + " * " + cipherText + " = "
     ct = (ct * cipherText) % BigInt(n ** 2)
     document.getElementById("result").innerHTML += ct + "<br>"
+    document.getElementById("result").innerHTML += "Current value: " + ct + "<br>"
 }

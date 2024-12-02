@@ -7,8 +7,10 @@
 </head>
 
 <body>
-    <h1>Playing with Pailler!</h1>
-    <div id="descP" name="descP">
+    <div class="pageTitle">
+        <h1>Playing with Pailler!</h1>
+    </div>
+    <div id="descP" name="descP" class="welcomeDiv">
         <p>
             Pailler may be daunting at first it is easy once you mess around with it. This page is to allow you to play
             around with pailler encryption. To begin we will want to encrypt pick our keys. I assume you have a g
@@ -22,39 +24,44 @@
         </p>
 
         Pick a private key p:
-        <input type="textbox" id="p" name="p"><br>
+        <input type="textbox" id="p" name="p" class="tb"><br>
         Pick a private key q:
-        <input type="textbox" id="q" name="q"><br>
+        <input type="textbox" id="q" name="q" class="tb"><br>
         Pick a public key g:
-        <input type="textbox" id="g" name="g"><br>
+        <input type="textbox" id="g" name="g" class="tb"><br>
         Pick a plaintext to encrypt:
-        <input type="textbox" id="pt" name="pt"><br>
-        <input type="button" onclick="loudEncrypt()" value="Encrypt!">
+        <input type="textbox" id="pt" name="pt" class="tb"><br>
+        <input type="button" onclick="loudEncrypt()" value="Encrypt!" class="button">
     </div>
-    <p id="firstValue" name="firstValue">
+    <div class="welcomeDiv">
 
-    </p>
+        <p id="firstValue" name="firstValue">
+            Waiting...
+        </p>
+    </div>
 
-    <div id="AddingEnc" style="visibility: hidden;">
+    <div id="AddingEnc" style="visibility: hidden;" class="welcomeDiv">
         Now with your new plaintext value we can modify it and apply homomoprishm. An interesting property you may
         notice is that we are limited by our n value. However, since its recommended to have very large choices of p and
         q
         for many pratical applications this won't be an issue.<br>
         Pick a plaintext to encrypt:
-        <input type="textbox" id="ptPrime" name="ptPrime"> <br>
-        <input type="button" onclick=" homomorphicAddition()" value="Add!">
+        <input type="textbox" id="ptPrime" name="ptPrime" class="tb"> <br>
+        <input type="button" onclick=" homomorphicAddition()" value="Add!" class="button">
         <div id="result" name="result">
 
         </div>
     </div>
 
-    <div id="dec" style="visibility: hidden;">
-        To confirm that it's successful we can also decrypt it.
-        <input type="button" onclick="decrypt()" value="Decrypt!" , id="DecB">
+    <div id="dec" style="visibility: hidden;" class="welcomeDiv">
+        To confirm that it's successful we can also decrypt it.<br>
+        <input type="button" onclick="decrypt()" value="Decrypt!" , id="DecB" class="button">
         <div id="resultDec" name="resultDec">
         </div>
     </div>
 
-    <a href="/">Return to home</a>
+    <div class="welcomeDiv">
 
+        <a href="/">Return to home</a>
+    </div>
 </body>
