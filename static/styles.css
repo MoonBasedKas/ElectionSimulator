@@ -38,5 +38,14 @@ a {
     border-style: ridge;
     color: #F2A7E6;
     border-color: #450013;
-    background-color: #163573;
+    background-color: #180066;
+}
+
+.subTitle {
+    text-align: center;
+    text-decoration: underline;
+}
+
+.welcomeText {
+    text-align: center;
 }
