@@ -7,10 +7,12 @@
 </head>
 
 <body>
-    <h2>Total Vote Log</h2>
-    <div>
+    <div class="pageTitle">
+        <h1>Total Vote Log</h1>
+    </div>
+    <div class="container">
         <div id="taco" class="log">
-            <h3>Taco Vote Log</h3>
+            <h3 class="subTitle">Taco Vote Log</h3>
             {% set ns = namespace() %}
             Inital Value = {{firstTaco}}<br>
             {% set ns.ct = firstTaco %}
@@ -24,7 +26,7 @@
         </div>
 
         <div id="pizza" class="log">
-            <h3>Pizza Vote Log</h3>
+            <h3 class="subTitle">Pizza Vote Log</h3>
             {% set ns = namespace() %}
             Inital Value = {{firstPizza}}<br>
             {% set ns.ct = firstTaco %}
@@ -38,9 +40,10 @@
         </div>
     </div>
 
-    <a href="\voting">View total vote breakdown.</a><br>
-    <a href="\">Start a new simulation</a>
-
+    <div class="welcomeDiv">
+        <a href="\voting">View total vote breakdown.</a><br>
+        <a href="\">Start a new simulation</a>
+    </div>
 
 
 </body>

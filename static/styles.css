@@ -80,3 +80,16 @@ a {
     border-radius: 10px;
     padding: 1%;
 }
+
+
+.log {
+    justify-content: center;
+    text-align: center;
+    margin: 10px;
+    background-color: #163573;
+    border-style: solid;
+    border-color: #450013;
+    color: #F2A7E6;
+    border-radius: 10px;
+    padding: 1%;
+}
