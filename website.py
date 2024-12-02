@@ -63,6 +63,7 @@ def start():
 
 @app.route('/voteLog')
 def vLog(tacoVote = None, firstTaco = None, tacoPT = None, nsq = None, pizzaVote = None, firstPizza = None, pizzaPT = None):
+    db.flushTables()
     data = db.fetchVotesEnc()
     # Apply the homomorphic calculations
     firstTaco = -1
@@ -110,6 +111,7 @@ def vote(vote = None, sum = None, win = None, winP = 50):
     for i in names:
         # location, taco, pizza, percent
         votes.append([i, -1, -1, 50, "Neither"])
+    db.flushTables()
     data = db.fetchVotesEnc()
     # Apply the homomorphic calculations
     for j in data:

@@ -39,6 +39,14 @@ class DBCon:
         self.cnx.commit()
 
     """
+    Fixes table caching.
+    """
+    def flushTables(self):
+        query = ('FLUSH TABLES')
+        self.cursor.execute(query, ())
+        self.cnx.commit()
+
+    """
     Fetches the votes from the database and returns their all votes.
     """
     def fetchVotesEnc(self):
