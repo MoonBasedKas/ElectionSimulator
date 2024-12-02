@@ -2,18 +2,16 @@
 
 <head>
     <title>The race progress</title>
-    <style>
-    </style>
-    <script>
-        // We might not need this here
-    </script>
+    <link rel="stylesheet" href="static/styles.css">
 </head>
 
 <body>
-    <h2>The Great Soccoro Taco Vs Pizza Vote.</h2>
+    <div class="pageTitle">
+        <h1>The Great Soccoro Taco Vs Pizza Vote.</h1>
+    </div>
 
-    <div class="Vote Info">
-        Total Votes: {{sum[0] + sum[1]}}<br>
+    <div class="VoteInfo">
+        <h2>Total Votes: {{sum[0] + sum[1]}}</h2><br>
         Taco: {{sum[0]}} vs Pizza: {{sum[1]}}<br>
         <progress value={{winP}} max="100"></progress><br>
         Election Winner: {{win}}!
@@ -22,18 +20,19 @@
     <div class="container">
         {% for i in vote%}
         <div class="provence">
-            <h4>{{i[0]}}</h4><br>
+            <h3>{{i[0]}}</h3>
             Taco Votes: {{i[1]}} <br>
             Pizza Votes: {{i[2]}} <br>
-            <progress value={{i[3]}} max="100"></progress><br>
+            <progress value={{i[3]}} max="100" class="voteBar"></progress><br>
             {{i[4]}} is currently winning!
         </div>
         <br>
         <br>
         {% endfor %}
     </div>
-    <a href="voteLog">View vote log</a>
-    <a href="\">Start another simulation</a>
-
+    <div class="welcomeDiv">
+        <a href="voteLog">View vote log</a><br>
+        <a href="\">Start another simulation</a>
+    </div>
 
 </body>

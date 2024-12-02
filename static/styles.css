@@ -49,3 +49,34 @@ a {
 .welcomeText {
     text-align: center;
 }
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.provence {
+    justify-content: center;
+    text-align: center;
+    margin: 10px;
+    background-color: #163573;
+    border-style: solid;
+    border-color: #450013;
+    color: #F2A7E6;
+    border-radius: 10px;
+    padding: 1%;
+}
+
+
+.VoteInfo {
+    justify-content: center;
+    text-align: center;
+    margin: 10px;
+    background-color: #163573;
+    border-style: solid;
+    border-color: #450013;
+    color: #F2A7E6;
+    border-radius: 10px;
+    padding: 1%;
+}
