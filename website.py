@@ -77,7 +77,7 @@ def vLog(tacoVote = None, firstTaco = None, tacoPT = None, nsq = None, pizzaVote
                 firstTaco = j.count
             else:
                 tacoVote.append(j.count)
-        else:
+        if j.canidate == "Pizza":
             if firstPizza == -1:
                 firstPizza = j.count
             else:
@@ -91,8 +91,11 @@ def vLog(tacoVote = None, firstTaco = None, tacoPT = None, nsq = None, pizzaVote
     for i in tacoVote:
         temp.add(i)
     tacoPT = temp.decrypt()
+    temp = paillierObj.paillerObj(keys.n, keys.g)
+    temp.p = keys.p
+    temp.q = keys.q
     temp.cipherText = firstPizza
-    for i in tacoVote:
+    for i in pizzaVote:
         temp.add(i)
     pizzaPT = temp.decrypt()
 
