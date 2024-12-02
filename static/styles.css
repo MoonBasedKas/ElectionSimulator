@@ -28,3 +28,15 @@ body {
 a {
     color: #6BBEF2;
 }
+
+.tb {
+    border-radius: 5px;
+}
+
+.button {
+    border-radius: 5px;
+    border-style: ridge;
+    color: #F2A7E6;
+    border-color: #450013;
+    background-color: #163573;
+}
