@@ -1,3 +1,17 @@
 body {
-    color: black;
+    background-color: #163573;
+    background-image: linear-gradient(to bottom right, #163573, #BC3486);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    padding: 10px;
+    margin: 10px;
+}
+
+.welcomeDiv {
+    background-color: #07004D;
+    border-style: solid;
+    border-color: #7B0828;
+    color: ghostwhite;
+    border-radius: 10px;
+    padding: 10px;
 }
