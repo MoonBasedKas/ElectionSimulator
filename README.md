@@ -27,9 +27,6 @@ it'll direct you to another page where you can click start and advance to the ac
 # Scenario 1.1
 No malicous actors exist within the network.
 
-# Scenario 1.2
-Some malicous actor is on the network and will send repeat messages. Represented by a vote station occasionally sending a second insertion.
-
 
 # Gui
 Gui will be implemented using a python flask server. This is to give more immersion as election results as they are
